@@ -30,7 +30,7 @@ export default function Page() {
             </Link>
 
             <Link
-              href="/pricing/part-time-full-time-cost"
+              href="/pricing/monthly-support"
               className="rounded-xl border px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
             >
               Compare plans
