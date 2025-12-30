@@ -1,5 +1,7 @@
 export const runtime = "nodejs";
-import nodemailer from "nodemailer";
+
+const nodemailer = require("nodemailer");
+
 
 export async function POST(req: Request) {
   try {
