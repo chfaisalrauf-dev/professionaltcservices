@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 
 const BRAND = { blue: "#0B3C8A", teal: "#1FA7A0" };
 
@@ -22,20 +23,19 @@ export default function Page() {
     message: "",
   });
 
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "sent" | "error"
-  >("idle");
-
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
   const [errorMsg, setErrorMsg] = useState("");
 
   const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setForm((p) => ({ ...p, [name]: value }));
   };
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("sending");
     setErrorMsg("");
@@ -71,28 +71,23 @@ export default function Page() {
 
   return (
     <main>
-      {/* HERO */}
       <section className="border-b bg-gray-50">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <p className="text-sm font-semibold" style={{ color: BRAND.teal }}>
             Contact
           </p>
-
           <h1 className="mt-2 text-4xl font-semibold tracking-tight text-gray-900">
             Get in touch
           </h1>
-
           <p className="mt-4 max-w-2xl text-lg text-gray-600">
             Tell us what kind of support you need and we’ll get back to you.
           </p>
         </div>
       </section>
 
-      {/* CONTENT */}
       <section>
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-            {/* CONTACT DETAILS */}
             <div className="rounded-2xl border bg-white p-6 shadow-sm">
               <h2 className="text-xl font-semibold text-gray-900">
                 Contact details
@@ -129,7 +124,6 @@ export default function Page() {
               </div>
             </div>
 
-            {/* FORM (CONNECTED) */}
             <div className="rounded-2xl border bg-white p-6 shadow-sm">
               <h2 className="text-xl font-semibold text-gray-900">
                 Send a message
@@ -247,7 +241,7 @@ function Field({
   label: string;
   name: string;
   value: string;
-  onChange: any;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   required?: boolean;
   type?: string;
