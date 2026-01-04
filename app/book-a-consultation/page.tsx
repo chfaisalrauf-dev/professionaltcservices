@@ -45,7 +45,7 @@ export default function Page() {
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
           <div className="grid gap-8 lg:grid-cols-3 lg:items-start lg:gap-10">
             {/* LEFT INFO */}
-            <div className="rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
+            <div className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
               <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
                 What we’ll cover
               </h2>
@@ -81,20 +81,12 @@ export default function Page() {
                 strategy="afterInteractive"
               />
 
+              {/* Responsive height without styled-jsx */}
               <div
-                className="calendly-inline-widget w-full"
+                className="calendly-inline-widget w-full h-[650px] sm:h-[700px]"
                 data-url="https://calendly.com/faisal-professionaltcservices/30min"
-                style={{ height: "700px" }}
+                style={{ minWidth: "0" }}
               />
-
-              {/* Optional: slightly shorter height on very small screens */}
-              <style jsx>{`
-                @media (max-width: 640px) {
-                  .calendly-inline-widget {
-                    height: 650px !important;
-                  }
-                }
-              `}</style>
 
               <p className="mt-4 text-xs text-gray-500">
                 If the calendar doesn’t load, refresh the page once.
