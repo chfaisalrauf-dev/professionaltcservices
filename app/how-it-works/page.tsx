@@ -4,27 +4,27 @@ const BRAND = { blue: "#0B3C8A", teal: "#1FA7A0" };
 
 export default function Page() {
   return (
-    <main>
+    <main className="bg-white">
       {/* HERO */}
       <section className="border-b bg-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
           <p className="text-sm font-semibold" style={{ color: BRAND.teal }}>
             How It Works
           </p>
 
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-gray-900">
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
             A simple process to start delegating fast
           </h1>
 
-          <p className="mt-4 max-w-2xl text-lg text-gray-600">
-            We learn your workflow, match the right support, and implement a system that keeps tasks moving
-            consistently.
+          <p className="mt-3 max-w-2xl text-base text-gray-600 sm:mt-4 sm:text-lg">
+            We learn your workflow, match the right support, and implement a
+            system that keeps tasks moving consistently.
           </p>
 
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <Link
               href="/book-a-consultation"
-              className="rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-sm hover:opacity-95"
+              className="inline-flex w-full items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-sm hover:opacity-95 sm:w-auto"
               style={{
                 background: `linear-gradient(135deg, ${BRAND.teal}, ${BRAND.blue})`,
               }}
@@ -37,12 +37,12 @@ export default function Page() {
 
       {/* STEPS */}
       <section>
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
+          <h2 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
             The 4-step onboarding
           </h2>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
             <Step
               n="01"
               title="Discovery call"
@@ -73,15 +73,16 @@ export default function Page() {
 
       {/* WHAT YOU NEED */}
       <section className="border-y bg-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
             <div>
-              <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
+              <h2 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
                 What we need from you
               </h2>
 
-              <p className="mt-4 text-gray-600">
-                You don’t need complicated systems. Just a few basics so we can move quickly.
+              <p className="mt-4 text-sm text-gray-600 sm:text-base">
+                You don’t need complicated systems. Just a few basics so we can
+                move quickly.
               </p>
 
               <ul className="mt-6 space-y-3 text-gray-700">
@@ -92,8 +93,9 @@ export default function Page() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
               <p className="text-sm font-semibold text-gray-900">Common tools</p>
+
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <Tag text="Google Workspace" />
                 <Tag text="Microsoft 365" />
@@ -104,7 +106,8 @@ export default function Page() {
               </div>
 
               <div className="mt-6 rounded-xl bg-gray-50 p-4 text-sm text-gray-700">
-                We’ll adapt to your workflow and introduce structure where needed.
+                We’ll adapt to your workflow and introduce structure where
+                needed.
               </div>
             </div>
           </div>
@@ -113,25 +116,26 @@ export default function Page() {
 
       {/* CTA */}
       <section>
-        <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
           <div
-            className="rounded-2xl px-8 py-10 text-white"
+            className="rounded-2xl px-5 py-8 text-white sm:px-8 sm:py-10"
             style={{
               background: `linear-gradient(135deg, ${BRAND.teal}, ${BRAND.blue})`,
             }}
           >
-            <h2 className="text-3xl font-semibold tracking-tight">
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               Ready to start delegating?
             </h2>
 
-            <p className="mt-3 max-w-2xl text-white/85">
-              Book a consultation and we’ll recommend the best support plan for your workflow and goals.
+            <p className="mt-3 max-w-2xl text-sm text-white/85 sm:text-base">
+              Book a consultation and we’ll recommend the best support plan for
+              your workflow and goals.
             </p>
 
             <div className="mt-6">
               <Link
                 href="/book-a-consultation"
-                className="inline-flex rounded-xl bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
+                className="inline-flex w-full items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100 sm:w-auto"
               >
                 Book a Consultation
               </Link>
@@ -155,16 +159,19 @@ function Step({
   accent: string;
 }) {
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
-      <div className="flex items-start justify-between gap-6">
+    <div className="rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
+      <div className="flex items-start justify-between gap-4 sm:gap-6">
         <div>
           <p className="text-sm font-semibold text-gray-500">{n}</p>
           <p className="mt-2 text-lg font-semibold text-gray-900">{title}</p>
           <p className="mt-2 text-sm leading-6 text-gray-600">{desc}</p>
         </div>
+
         <div
-          className="h-10 w-10 rounded-xl"
-          style={{ background: `linear-gradient(135deg, ${accent}, transparent)` }}
+          className="h-10 w-10 shrink-0 rounded-xl"
+          style={{
+            background: `linear-gradient(135deg, ${accent}, transparent)`,
+          }}
           aria-hidden
         />
       </div>
@@ -175,7 +182,7 @@ function Step({
 function Bullet({ text }: { text: string }) {
   return (
     <li className="flex gap-3">
-      <span className="mt-2 h-2 w-2 rounded-full bg-gray-900" />
+      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-gray-900" />
       <span className="text-sm leading-6">{text}</span>
     </li>
   );

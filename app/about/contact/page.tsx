@@ -70,33 +70,40 @@ export default function Page() {
   };
 
   return (
-    <main>
+    <main className="bg-white">
+      {/* Header */}
       <section className="border-b bg-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
           <p className="text-sm font-semibold" style={{ color: BRAND.teal }}>
             Contact
           </p>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-gray-900">
+
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
             Get in touch
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-gray-600">
+
+          <p className="mt-3 max-w-2xl text-base text-gray-600 sm:mt-4 sm:text-lg">
             Tell us what kind of support you need and we’ll get back to you.
           </p>
         </div>
       </section>
 
+      {/* Content */}
       <section>
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-            <div className="rounded-2xl border bg-white p-6 shadow-sm">
-              <h2 className="text-xl font-semibold text-gray-900">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
+            {/* Left card */}
+            <div className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
+              <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
                 Contact details
               </h2>
 
               <div className="mt-5 space-y-4 text-sm text-gray-700">
                 <div>
                   <p className="font-semibold text-gray-900">Email</p>
-                  <p className="mt-1">faisal@professionaltcservices.com</p>
+                  <p className="mt-1 break-words">
+                    faisal@professionaltcservices.com
+                  </p>
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Phone</p>
@@ -113,7 +120,7 @@ export default function Page() {
                 <div className="mt-3">
                   <Link
                     href="/book-a-consultation"
-                    className="inline-flex rounded-xl px-4 py-2 text-sm font-semibold text-white hover:opacity-95"
+                    className="inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold text-white hover:opacity-95 sm:w-auto"
                     style={{
                       background: `linear-gradient(135deg, ${BRAND.teal}, ${BRAND.blue})`,
                     }}
@@ -124,8 +131,9 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="rounded-2xl border bg-white p-6 shadow-sm">
-              <h2 className="text-xl font-semibold text-gray-900">
+            {/* Right card */}
+            <div className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
+              <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
                 Send a message
               </h2>
 
@@ -133,17 +141,20 @@ export default function Page() {
                 We usually respond within 1 business day.
               </p>
 
-              {status === "sent" && (
-                <div className="mt-5 rounded-xl border bg-green-50 p-4 text-sm text-green-800">
-                  Message sent ✅ We’ll get back to you soon.
-                </div>
-              )}
+              {/* Keeps layout stable */}
+              <div className="mt-5 min-h-[64px]">
+                {status === "sent" && (
+                  <div className="rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-800">
+                    Message sent ✅ We’ll get back to you soon.
+                  </div>
+                )}
 
-              {status === "error" && (
-                <div className="mt-5 rounded-xl border bg-red-50 p-4 text-sm text-red-800">
-                  {errorMsg}
-                </div>
-              )}
+                {status === "error" && (
+                  <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+                    {errorMsg}
+                  </div>
+                )}
+              </div>
 
               <form onSubmit={onSubmit} className="mt-6 space-y-4">
                 <Field
@@ -179,8 +190,8 @@ export default function Page() {
                     name="service"
                     value={form.service}
                     onChange={onChange}
-                    className="mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
-                    style={{ borderColor: "#e5e5e5" }}
+                    className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:ring-2"
+                    style={{ outlineColor: BRAND.teal }}
                   >
                     <option>Real Estate Admin</option>
                     <option>Transaction Coordinator</option>
@@ -198,8 +209,8 @@ export default function Page() {
                     name="message"
                     value={form.message}
                     onChange={onChange}
-                    className="mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
-                    style={{ borderColor: "#e5e5e5" }}
+                    className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:ring-2"
+                    style={{ outlineColor: BRAND.teal }}
                     rows={6}
                     placeholder="Tell us about your business and what you want to delegate..."
                     required
@@ -255,9 +266,18 @@ function Field({
         value={value}
         onChange={onChange}
         required={required}
-        className="mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
-        style={{ borderColor: "#e5e5e5" }}
+        className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:ring-2"
         placeholder={placeholder}
+        inputMode={name === "phone" ? "tel" : undefined}
+        autoComplete={
+          name === "name"
+            ? "name"
+            : name === "email"
+            ? "email"
+            : name === "phone"
+            ? "tel"
+            : undefined
+        }
       />
     </div>
   );
